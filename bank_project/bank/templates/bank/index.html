@@ -1,0 +1,20 @@
+<!-- file bank_project/bank/templates/bank/index.html -->
+{% extends "bank/base.html" %}
+
+{% block content %}
+    <hr />
+    <ul>
+      {% for account in accounts  %}
+         <li>{{ account.account_name }}</li>
+      {% endfor  %}
+   </ul>
+   <hr />
+   <form action="." method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend><label>Add new account</label></legend>
+             {% csrf_token %}
+            <input name="account_name" type="text" placeholder="Account name">
+            <button>Submit</button>
+        </fieldset>
+    </form>
+{% endblock %}
